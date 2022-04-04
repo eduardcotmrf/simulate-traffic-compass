@@ -1,4 +1,4 @@
 # simulate-traffic-compass
 
-./node_modules/.bin/cypress open
-
+npm i
+npm run cy:run:five // to run 5 in paralel
