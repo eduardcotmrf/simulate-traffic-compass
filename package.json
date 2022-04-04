@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:run": "./node_modules/.bin/cypress run",
+    "cy:run": "./node_modules/.bin/cypress run --browser chrome",
     "cy:open": "./node_modules/.bin/cypress open",
     "cy:run:five": "./scripts/recirculation.sh"
   },

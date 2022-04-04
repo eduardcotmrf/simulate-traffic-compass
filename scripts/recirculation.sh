@@ -4,6 +4,6 @@ END=5
 x=$END 
 while [ $x -gt 0 ]; 
 do 
-  npm run cy:run &
+  npm run cy:run
   x=$(($x-1))
 done
