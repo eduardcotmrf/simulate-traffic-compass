@@ -17,6 +17,16 @@
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+
+  on('before:browser:launch', (browser, launchOptions) => {
+    if (browser.family === 'chromium' && browser.name !== 'electron') {
+        // in Chromium, preferences can exist in Local State, Preferences, or Secure Preferences
+        // via launchOptions.preferences, these can be acccssed as `localState`, `default`, and `secureDefault`
+
+        // for example, to set `somePreference: true` in Preferences:
+        launchOptions.args.push('--incognito')
+
+        return launchOptions
+    } 
+  });
+};

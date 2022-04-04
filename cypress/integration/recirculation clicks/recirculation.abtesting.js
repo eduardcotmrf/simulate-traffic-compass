@@ -3,10 +3,10 @@ function clickOnRanndomLink (numRepetitions, ratio) {
   for(let i = 0; i< numRepetitions; i++) {
     cy.visit('http://newsofcthulhu.com')
 
-    cy.get('[data-mrf-recirculation] a').its('length').then(elementCount => {
+    cy.get('[data-mrf-recirculation=sidebar-with-image] a').its('length').then(elementCount => {
         let selected = Cypress._.random(elementCount - 1); // lower = 0 is default
 
-        const anchor = cy.get('[data-mrf-recirculation] a').eq(selected).scrollIntoView();
+        const anchor = cy.get('[data-mrf-recirculation=sidebar-with-image] a').eq(selected).scrollIntoView();
        anchor.then(function($elem) {
 
         console.log('ED: scrolling',$elem.text());
@@ -20,11 +20,11 @@ function clickOnRanndomLink (numRepetitions, ratio) {
   }
 };
 
-const cases = [{ n: 3, r: 0.5}]
+const cases = [{ n: 3, r: 0.3}, { n: 3, r: 0.3}]
 
-describe('example reciruclation', () => {
+describe('example reciruclation with ab testing', () => {
 
-  it('click on random link', () => {
+  it('click on random link with ab testing', () => {
     cases.forEach(({n, r}) => {
       cy.clearLocalStorage()
       cy.clearCookies()
